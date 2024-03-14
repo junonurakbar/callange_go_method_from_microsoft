@@ -6,16 +6,23 @@ import (
 )
 
 func TestProgram(t *testing.T) {
-	lele := Employee{
-		Account{
-			FirstName: "Lele",
-			LastName: "Nihao",
-		},
-		0,
+	lele, _ := CreateEmployee("Lele", "Nihao", 0.0)
+
+	plusCredit, err := lele.AddCredits(90.25)
+	if err != nil {
+		fmt.Println("invalid credit amount")
+	} else {
+		fmt.Printf("Added %.2f amount\n", plusCredit)
 	}
-	lele.ChangeName("Nihao", "Blyat")
-	lele.AddCredits(90.25)
-	lele.RemoveCredits(21)
-	lele.GetCredits()
-	fmt.Println(lele)
+
+	minusCredit, err := lele.RemoveCredits(21)
+	if err != nil {
+		fmt.Println("invalid credit amount")
+	} else {
+		fmt.Printf("Balance: %.2f\n", minusCredit)
+	}
+	
+	lele.ChangeName("Nihao", "Ma")
+
+	fmt.Println(lele.String())
 }
