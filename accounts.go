@@ -1,5 +1,7 @@
 package challange
 
+import "fmt"
+
 type Account struct {
 	FirstName string
 	LastName  string
@@ -24,5 +26,6 @@ func (e Employee) RemoveCredits(balance float64) float64 {
 	return e.credits
 }
 func (e Employee) GetCredits() float64 {
+	fmt.Println(e.FirstName, e.LastName, "credit is:", e.credits)
 	return e.credits
 }
